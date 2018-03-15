@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Forums Workshop</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="centered-item">
+        <h1>OneMillion</h1>
+		<h4>Done by: Yaser Al-Najjar</h4>
+    </div>
+
+    <div class="centered-item">
+        <a href="#">Members</a>
+
+        <a href="#">Profile</a>
+    </div>
+
+    <div class="content">
+        <a href="{{ url_for("topic_add") }}">Add</a>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+
+                    <th>
+                        Edit
+                    </th>
+
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+            {% for post in posts %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for("topic_show", id = post.id) }}">{{post.title}}</a>
+                    </td>
+
+                    <td>
+                        <a href="{{ url_for("topic_update", id = post.id) }}">edit</a>
+                    </td>
+
+                    <td>
+                        <a href="{{ url_for("topic_delete", id = post.id) }}">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
